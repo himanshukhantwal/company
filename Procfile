@@ -1,1 +1,1 @@
-web: mvn jetty:run
+web: mvn -Djetty.port=5000 jetty:run
