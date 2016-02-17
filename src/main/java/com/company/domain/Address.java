@@ -11,9 +11,18 @@ import org.springframework.stereotype.Component;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Address {
     String streetAddress;
-    City city;
-    Country country;
+    String city;
+    String country;
     int pincode;
+
+    public Address(){}
+
+    public Address(String streetAddress,String city, String country, int pincode){
+        this.streetAddress=streetAddress;
+        this.city=city;
+        this.country=country;
+        this.pincode=pincode;
+    }
 
     public String getStreetAddress() {
         return streetAddress;
@@ -23,19 +32,19 @@ public class Address {
         this.streetAddress = streetAddress;
     }
 
-    public City getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public Country getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 

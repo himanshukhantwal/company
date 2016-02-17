@@ -21,8 +21,10 @@ angular.module('companyApp.controllers', []).controller('companyListController',
   };
 }).controller('companyEditController', function($scope, $state, $stateParams, Company) {
   $scope.updateCompany = function() { //Update the edited movie. Issues a PUT to /api/company/:id
-  var ownerNameList = ($scope.company.ownerNames).split(",");
-  $scope.company.ownerNames=ownerNameList;
+  if (typeof $scope.company.ownerNames == 'string') {
+      var ownerNameList = ($scope.company.ownerNames).split(",");
+        $scope.company.ownerNames=ownerNameList;
+  }
     $scope.company.$update(function() {
       $state.go('companys'); // on success go back to home i.e. company state.
     });

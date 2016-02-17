@@ -17,7 +17,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/company")
 public class CompanyServiceImpl implements CompanyService {
-    Map<Integer,Company> inMemoryCompanyDB=new HashMap<Integer, Company>();
+    Map<Integer,Company> inMemoryCompanyDB;
     private static int generatedCompanyId=2;
 
     @RequestMapping(method = RequestMethod.POST)
@@ -43,6 +43,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Company updateCompany(@PathVariable int id, @RequestBody Company company) {
+        company.setCompanyId(id);
         inMemoryCompanyDB.put(id,company);
         return company;
     }
@@ -58,5 +59,9 @@ public class CompanyServiceImpl implements CompanyService {
         Company company=inMemoryCompanyDB.get(id);
         company.addOwnerName(ownername);
         return company.getOwnerNames().toArray(new String[company.getOwnerNames().size()]);
+    }
+
+    public void setInMemoryCompanyDB(Map<Integer, Company> inMemoryCompanyDB) {
+        this.inMemoryCompanyDB = inMemoryCompanyDB;
     }
 }
