@@ -3,7 +3,7 @@
 # company
 Company App is used to perform CRUD(create, update, delete, get) operation on Company Entity. Back-End API's are exposed using spring MVC and Front End is created using angular JS
 
-###Build project :
+###Build  project :
 ```mvn clean install```
 
 ###Running project :
